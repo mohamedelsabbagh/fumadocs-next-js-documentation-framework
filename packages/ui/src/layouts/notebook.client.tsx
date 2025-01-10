@@ -6,8 +6,17 @@ import { useNav } from '@/components/layout/nav';
 import { SidebarTrigger } from 'fumadocs-core/sidebar';
 import { buttonVariants } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import type { Option } from '@/components/layout/root-toggle';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { isActive } from '@/utils/is-active';
 
-export function Navbar(props: HTMLAttributes<HTMLElement>) {
+export function Navbar({
+  full,
+  ...props
+}: HTMLAttributes<HTMLElement> & {
+  full: boolean;
+}) {
   const { open, collapsed } = useSidebar();
   const { isTransparent } = useNav();
 
@@ -22,16 +31,34 @@ export function Navbar(props: HTMLAttributes<HTMLElement>) {
       )}
       style={
         {
-          paddingInlineStart: collapsed
-            ? 'calc(var(--fd-layout-offset))'
-            : 'calc(var(--fd-layout-offset) + var(--fd-sidebar-width))',
+          paddingInlineStart:
+            collapsed || full
+              ? 'calc(var(--fd-layout-offset))'
+              : 'calc(var(--fd-layout-offset) + var(--fd-sidebar-width))',
         } as object
       }
     >
-      <div className="mx-auto flex size-full flex-row items-center border-b border-fd-foreground/10 px-4 md:gap-1.5 lg:px-8">
-        {props.children}
-      </div>
+      {props.children}
     </header>
+  );
+}
+
+export function NavbarTab(tab: Option) {
+  const pathname = usePathname();
+  const active = tab.urls
+    ? tab.urls.includes(pathname)
+    : isActive(tab.url, pathname);
+
+  return (
+    <Link
+      href={tab.url}
+      className={cn(
+        '-mx-2 whitespace-nowrap border-b border-transparent px-2 pb-2 text-sm text-fd-muted-foreground transition-all',
+        active && 'border-fd-primary font-medium text-fd-primary',
+      )}
+    >
+      {tab.title}
+    </Link>
   );
 }
 

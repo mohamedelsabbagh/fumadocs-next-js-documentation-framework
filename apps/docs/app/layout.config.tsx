@@ -57,7 +57,7 @@ export const logo = (
     />
 
     <FumadocsIcon
-      className="size-4 [.uwu_&]:hidden [header_&]:size-5"
+      className="size-5 [.uwu_&]:hidden [header_&]:size-5"
       fill="currentColor"
     />
   </>
@@ -68,7 +68,7 @@ export const baseOptions: BaseLayoutProps = {
     title: (
       <>
         {logo}
-        <span className="font-medium [.uwu_&]:hidden [header_&]:text-[15px]">
+        <span className="text-lg font-medium tracking-tight [.uwu_&]:hidden [header_&]:text-[15px]">
           Fumadocs
         </span>
       </>

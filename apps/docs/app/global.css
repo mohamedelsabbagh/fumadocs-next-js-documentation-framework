@@ -21,6 +21,7 @@
 }
 
 body {
+  --fd-layout-width: 1400px;
   overscroll-behavior-y: none;
 }
 

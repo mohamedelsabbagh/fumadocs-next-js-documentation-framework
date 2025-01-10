@@ -1,4 +1,4 @@
-import { DocsLayout, type DocsLayoutProps } from 'fumadocs-ui/layouts/docs';
+import { DocsLayout, type DocsLayoutProps } from 'fumadocs-ui/layouts/notebook';
 import type { ReactNode } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { baseOptions, linkItems } from '@/app/layout.config';
@@ -11,7 +11,6 @@ import { buttonVariants } from '@/components/ui/button';
 const docsOptions: DocsLayoutProps = {
   ...baseOptions,
   tree: source.pageTree,
-  links: [linkItems[linkItems.length - 1]],
   sidebar: {
     tabs: {
       transform(option, node) {
