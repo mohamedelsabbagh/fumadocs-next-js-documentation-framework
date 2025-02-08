@@ -45,7 +45,7 @@
     "@fumari/json-schema-to-typescript": "^1.1.2",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
-    "@scalar/openapi-parser": "0.10.4",
+    "@scalar/openapi-parser": "0.10.5",
     "ajv-draft-04": "^1.0.0",
     "class-variance-authority": "^0.7.1",
     "fast-glob": "^3.3.3",
